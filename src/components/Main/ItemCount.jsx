@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 function ItemCount({ initial, stock, onAdd }) {
   const [counter, setCounter] = useState(initial);
 
@@ -17,12 +16,12 @@ function ItemCount({ initial, stock, onAdd }) {
 
   return (
     <>
+      <hr/>
+      <button type="button" className="fw-bold btn btn-success mx-2 border border-dark" onClick={() => minus()}>-</button>
+      <span className="fw-bold">{counter}</span>
+      <button type="button" className="fw-bold btn btn-success mx-2 border border-dark" onClick={() => plus()}>+</button>
       <hr />
-      <button onClick={() => minus()}>-</button>
-      <span>{counter}</span>
-      <button onClick={() => plus()}>+</button>
-      <hr />
-      <button onClick={() => onAdd(counter)}>Add to the cart</button>
+      <button type="button" className="fw-bold btn btn-success mx-2 border border-dark" onClick={() => onAdd(counter)}>Add to the cart</button>
     </>
   );
 }

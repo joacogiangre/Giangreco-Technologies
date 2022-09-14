@@ -3,7 +3,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 function CartWidget() {
   return (
-    <Badge badgeContent={4} color="secondary" id="cart">
+    <Badge badgeContent={4} color="secondary">
       <ShoppingCartIcon />
     </Badge>
   );

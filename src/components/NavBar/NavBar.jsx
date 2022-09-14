@@ -15,7 +15,7 @@ import CartWidget from "./CartWidget";
 const pages = [
   "TV, audio y video",
   "Celulares, Notebooks y Tecnología",
-  "Blog",
+  "Electrodomésticos y Aires Ac.",
 ];
 
 function NavBar() {

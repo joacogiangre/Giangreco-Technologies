@@ -3,9 +3,8 @@ import ItemListContainer from "./ItemListContainer";
 function Main() {
     return (
         <main>
-            <ItemListContainer greeting={"The products in my store"} />
+            <ItemListContainer title="Look our featured products!"/>
         </main>
-
-    )
+    );
 }
 export default Main;
