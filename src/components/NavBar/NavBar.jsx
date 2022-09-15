@@ -13,9 +13,9 @@ import AdbIcon from "@mui/icons-material/Adb";
 import CartWidget from "./CartWidget";
 
 const pages = [
-  "TV, audio y video",
-  "Celulares, Notebooks y Tecnología",
-  "Electrodomésticos y Aires Ac.",
+  "TV, audio and video",
+  "Cell Phones, Notebooks and Technology",
+  "Home appliances and air conditioners",
 ];
 
 function NavBar() {

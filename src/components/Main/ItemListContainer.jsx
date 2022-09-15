@@ -19,7 +19,6 @@ function ItemListContainer({ title }) {
       fetchData(2000, dataBase)
           .then(result => setData(result))
           .catch(err => console.log(err))
-      setData(dataBase)
   }, [])
 
   return (
