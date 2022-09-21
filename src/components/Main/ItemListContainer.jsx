@@ -7,15 +7,6 @@ import fetchData from '../utils/fetchData'
 import { useParams } from "react-router-dom";
 
 function ItemListContainer() {
-
-  /*const onAdd = (counter) => {
-    if (counter > 1) {
-      alert(`${counter} products has been added to the cart`);
-    } else {
-      alert(`${counter} product has been added to the cart`);
-    }
-  };*/
-
   const [data, setData] = useState([]);
   const {id}=useParams()
   useEffect(() => {
