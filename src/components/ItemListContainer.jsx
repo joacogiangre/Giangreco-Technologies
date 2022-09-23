@@ -1,9 +1,7 @@
-/*import ItemCount from "./ItemCount";
-<ItemCount initial={1} stock={10} onAdd={onAdd} />*/
 import ItemList from "./ItemList";
 import { useEffect, useState } from 'react'
-import dataBase from '../utils/dataBase'
-import fetchData from '../utils/fetchData'
+import dataBase from './utils/dataBase'
+import fetchData from './utils/fetchData'
 import { useParams } from "react-router-dom";
 
 function ItemListContainer() {

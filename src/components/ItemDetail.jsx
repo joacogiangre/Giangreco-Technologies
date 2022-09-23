@@ -1,17 +1,21 @@
 import { Link } from "react-router-dom";
 import ItemCount from "./ItemCount";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { CartContext } from "./CartContext";
 
 function ItemDetail({ item }) {
   const [counter, setCounter] = useState(0);
-  const stock = 10;
+  const ctx= useContext(CartContext);
+
   const onAdd = (counter) => {
     if (counter > 1) {
       alert(`${counter} products has been added to the cart`);
       setCounter(counter);
+      ctx.addItem(item, counter)
     } else {
       alert(`${counter} product has been added to the cart`);
       setCounter(counter);
+      ctx.addItem(item, counter)
     }
   };
 
@@ -25,7 +29,7 @@ function ItemDetail({ item }) {
         <p className="card-text">{item.description}</p>
         <p className="card-text fw-bold">{item.price}</p>
         {counter === 0 ? (
-          <ItemCount stock={stock} initial={counter} onAdd={onAdd}></ItemCount>
+          <ItemCount stock={item.stock} initial={counter} onAdd={onAdd}></ItemCount>
         ) : (
           <Link to="/cart">
             <button type="button" className="btn btn-danger border border-dark">
