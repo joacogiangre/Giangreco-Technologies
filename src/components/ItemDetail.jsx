@@ -27,7 +27,7 @@ function ItemDetail({ item }) {
       <div className="card-body">
         <h5 className="card-title my-3 fw-bold">{item.title}</h5>
         <p className="card-text">{item.description}</p>
-        <p className="card-text fw-bold">{item.price}</p>
+        <p className="card-text fw-bold">${new Intl.NumberFormat('es-MX').format(item.price)}</p>
         {counter === 0 ? (
           <ItemCount stock={item.stock} initial={counter} onAdd={onAdd}></ItemCount>
         ) : (

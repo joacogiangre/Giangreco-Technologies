@@ -9,7 +9,7 @@ function Item({ id, pictureUrl, title, description, price }) {
       <div className="card-body">
         <h5 className="card-title my-3 fw-bold">{title}</h5>
         <p className="card-text">{description}</p>
-        <p className="card-text fw-bold">{price}</p>
+        <p className="card-text fw-bold">${new Intl.NumberFormat('es-MX').format(price)}</p>
         <Link to={`/item/${id}`}><button type="button" className="btn btn-primary border border-dark">Detail</button></Link>
       </div>
     </div>

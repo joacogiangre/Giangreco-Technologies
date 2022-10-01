@@ -26,8 +26,22 @@ function CartContextProvider({ children }){
         setCartList([]);
     }
 
+    const calcItemsQty=()=>{
+        let qtys = cartList.map(item=>item.qty);
+        return qtys.reduce(((previousValue, currentValue)=> previousValue + currentValue), 0);
+    }
+
+    const itemsPrice = (id) => {
+        let priceQty = cartList.find((item) => item.id === id);
+        return (priceQty.qty * priceQty.price)
+    }
+    const finalPrice = () => {
+        let priceQty = cartList.map(item => (item.price * item.qty));
+        return priceQty.reduce((acumulador, precioXProd) => acumulador += precioXProd, 0);
+    }
+
     return(
-        <CartContext.Provider value={{cartList, addItem, removeItem,clear}}>
+        <CartContext.Provider value={{cartList, addItem, removeItem,clear, calcItemsQty, itemsPrice, finalPrice}}>
             { children }
         </CartContext.Provider>
     )
