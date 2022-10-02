@@ -1,17 +1,24 @@
 import ItemDetail from './ItemDetail';
 import { useEffect, useState } from 'react'
-import dataBase from './utils/dataBase'
-import fetchData from './utils/fetchData'
 import { useParams } from "react-router-dom";
-
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "./utils/dataBaseConfig";
 function ItemDetailContainer() {
 
   const [data, setData] = useState([]);
   const {id}=useParams()
   useEffect(() => {
-      fetchData(2000, dataBase.find(item=>item.id===parseInt(id)))
-          .then(result => setData(result))
-          .catch(err => console.log(err))
+      async function fetchData(){
+        const docRef = doc(db, "products", id);
+        const docSnap = await getDoc(docRef);
+
+        const dataFromFirestore= {
+            id:parseInt(id),
+            ...docSnap.data()
+        }
+        setData(dataFromFirestore)
+      }
+      fetchData()
   }, [id])
 
   return (
