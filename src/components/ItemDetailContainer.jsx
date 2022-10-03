@@ -13,7 +13,7 @@ function ItemDetailContainer() {
         const docSnap = await getDoc(docRef);
 
         const dataFromFirestore= {
-            id:parseInt(id),
+            id:id,
             ...docSnap.data()
         }
         setData(dataFromFirestore)
