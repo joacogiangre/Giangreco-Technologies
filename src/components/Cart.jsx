@@ -3,20 +3,25 @@ import { CartContext } from "./CartContext";
 import { Link } from "react-router-dom"
 import { doc, setDoc, updateDoc, serverTimestamp, collection, increment } from "firebase/firestore";
 import { db } from "./utils/dataBaseConfig";
+import Swal from 'sweetalert2'
 
 const Cart=() => {
     const ctx = useContext(CartContext);
     async function createOrder(){
         const itemsOrder= ctx.cartList.map(item=>({id:item.id, title:item.title, price:item.price, qty:item.qty}))
         const sendOrder= {buyer:{name:"Ernesto",phone:"1132122321", email:"@gmail.com"}, items:itemsOrder, date:serverTimestamp(),total:ctx.finalPrice()}
-        //Para guardado
         const newOrderRef=doc(collection(db, "orders"))
         await setDoc(newOrderRef, sendOrder)
-        //Para actualizar base de datos
         ctx.cartList.forEach(async(item) => {
             const itemReference=doc(db, "products", item.id);
             await updateDoc(itemReference, {stock:increment(-item.qty)})
         });
+
+        Swal.fire(
+            'Purchase success',
+            'Your order is: '+newOrderRef.id,
+            'success'
+          )
 
         ctx.clear()
     }
@@ -24,7 +29,7 @@ const Cart=() => {
         <>
             <div className="row">
                 <h1 className="col-10">Your cart</h1>
-                <button onClick={ctx.clear} type="button" className="btn btn-primary mx-4 col-2">Delete all</button>
+                {ctx.cartList.length !== 0 && <button onClick={ctx.clear} type="button" className="btn btn-primary mx-4 col-2">Delete all</button>}
                 <Link to="/"><button type="button" className="btn btn-primary mx-3 my-2 col-2">Continue shopping </button></Link>
             </div>
             {ctx.cartList.length === 0 ? <div>

@@ -8,6 +8,7 @@ function ItemListContainer() {
   const [data, setData] = useState([]);
   const {idCategory}=useParams()
   useEffect(() => {
+    //Request a product from the dataBase based on his id
     async function fetchData() {
       if (idCategory) {
           const q = query(collection(db, "products"), where('categoryId', '==', parseInt(idCategory)))

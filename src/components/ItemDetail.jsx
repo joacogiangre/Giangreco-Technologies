@@ -8,15 +8,8 @@ function ItemDetail({ item }) {
   const ctx= useContext(CartContext);
 
   const onAdd = (counter) => {
-    if (counter > 1) {
-      alert(`${counter} products has been added to the cart`);
       setCounter(counter);
       ctx.addItem(item, counter)
-    } else {
-      alert(`${counter} product has been added to the cart`);
-      setCounter(counter);
-      ctx.addItem(item, counter)
-    }
   };
 
   return (

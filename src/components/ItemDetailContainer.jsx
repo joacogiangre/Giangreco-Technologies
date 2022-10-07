@@ -8,6 +8,7 @@ function ItemDetailContainer() {
   const [data, setData] = useState([]);
   const {id}=useParams()
   useEffect(() => {
+    //Request the detail of the product to the database, based on his id
       async function fetchData(){
         const docRef = doc(db, "products", id);
         const docSnap = await getDoc(docRef);
