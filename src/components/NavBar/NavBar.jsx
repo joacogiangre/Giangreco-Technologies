@@ -9,7 +9,7 @@ function NavBar() {
   return (
     <Navbar bg="primary" expand="lg">
       <Container className="my-2">
-        <Link to="/"><Navbar.Brand className="text-dark fw-bolder">Giangreco Technologies</Navbar.Brand></Link>
+        <Link to="/"><Navbar.Brand className="text-dark fw-bolder">Giangreco's Technologies</Navbar.Brand></Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
